@@ -31,7 +31,7 @@ class CoursesController{
     //[POST] courses/store
     store(req,res,next){
         var formBody = req.body
-        formBody.image = `https://i.ytimg.com/vi/${req.body.videoID}/hq720.jpg`
+        formBody.image = req.body.videoID;
         const course = new Courses(formBody);
         course.save((err) => {
             if(err) {console.log('LỖI R')}
@@ -62,7 +62,7 @@ class CoursesController{
                 doc.name = formBody.name;
                 doc.description = formBody.description;
                 doc.videoID = formBody.videoID;
-                doc.image = `https://i.ytimg.com/vi/${formBody.videoID}/hq720.jpg`
+                doc.image = formBody.videoID;
                 doc.save((err,doc) => {
                     if(!err) res.redirect('/courses')
                 })

@@ -4,13 +4,6 @@
 class SiteController {
     //[GET] /
     index(req, res, next) {
-        // Course.find({})
-        //     .then(courses => {
-        //         res.render('home',{ 
-        //             courses: mongooseHandler.multipleMongooseToObject(courses)
-        //          })
-        //     })
-        //     .catch(next)
         res.render('home')
     }
 
