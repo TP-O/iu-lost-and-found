@@ -1,22 +1,54 @@
 <div class="mt-4 ml-3 mr-3 p-3">
-	<div class="row">
+	
+	{{#if courses.length}}
+		<div>
+			<h5 class="mb-4"><b>Filter</b></h5>
 
+			<form>
+				<input id="keyword" name="keyword" value="" type="hidden" />
+				<div class="form-group" style="width: 200px">
+					<label for="tag">Tag</label>
+					<select name="tag" class="custom-select">
+						<option value="None" selected>None</option>
+						<option value="Electronic Device">Electronic Device</option>
+						<option value="Pet">Pet</option>
+						<option value="Other Stuffs">Other Stuffs</option>
+					</select>
+				</div>
+
+				<button type="submit" class="btn btn-primary">Search</button>
+			</form>
+		</div>
+
+		<hr>
+
+		<div class="row">
 		{{#each courses}}
-		<div class="col-sm-6 col-lg-4">
-			<div class="card card-course-item">
-				<a href="/courses/{{this.slug}}">
-					<img src="{{this.image}}" alt="{{this.name}}" class="card-img-top">
-				</a>
-				<div class="card-body">
+			<div class="col-sm-6 col-lg-3">
+				<div class="card card-course-item">
 					<a href="/courses/{{this.slug}}">
-						<h5 class="card-title">{{this.name}}</h5>
+						<img src="{{this.image}}" alt="{{this.name}}" class="card-img-top">
 					</a>
-					{{!-- <p class="card-text">{{this.description}}</p> --}}
-					<a href="/courses/{{this.slug}}" class="btn btn-primary">View post</a>
+					<div class="card-body">
+						<a href="/courses/{{this.slug}}">
+							<h5 class="card-title">{{this.name}}</h5>
+						</a>
+						<a href="/courses/{{this.slug}}" class="btn btn-primary">View post</a>
+					</div>
 				</div>
 			</div>
-		</div>
 		{{/each}}
+		</div>
+	{{else}}
+		<h4 style="text-align: center; width: 100vw">Nothing :(</h4>
+	{{/if}}
 
-	</div>
+	<script>
+		const urlParams = new URLSearchParams(window.location.search);
+		const keyword = urlParams.get('keyword');
+
+		if (keyword) {
+			document.getElementById('keyword').value = keyword
+		}
+	</script>
 </div>

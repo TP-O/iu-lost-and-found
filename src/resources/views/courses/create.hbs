@@ -1,21 +1,37 @@
-<div class="mt-4 ml-3 mr-3">
+<div class="mt-4 mx-auto" style="width: 750px;">
     <h3>Create new post</h3>
 
     <form method="post" action="/courses/store">
         <div class="form-group">
-            <label for="name">Post title</label>
+            <label for="name">Title</label>
             <input type="text" class="form-control" id="name" name="name">
         </div>
 
         <div class="form-group">
-            <label for="description">Description</label>
-            <input type="text" class="form-control" id="description" name="description">
+            <label for="messenger">Messenger link</label>
+            <input type="text" class="form-control" id="messenger" name="messenger">
         </div>
 
         <div class="form-group">
-            <label for="videoID">Image link</label>
-            <input type="text" class="form-control" id="videoID" name="videoID">
+            <label for="image">Image</label>
+            <input type="file" class="form-control" id="image" name="image">
         </div>
-        <input type="submit" value="Create post">
+
+        <div class="form-group">
+            <label for="tag">Tag</label>
+            <select name="tag" class="custom-select">
+                <option value="None" selected>None</option>
+                <option value="Electronic Device">Electronic Device</option>
+                <option value="Pet">Pet</option>
+                <option value="Other Stuffs">Other Stuffs</option>
+            </select>
+        </div>
+
+        <div class="form-group">
+            <label for="description">Description</label>
+            <textarea  class="form-control" id="description" name="description" row="5"></textarea>
+        </div>
+
+        <button type="submit" class="btn btn-primary">ZO ei</button>
     </form>
 </div>

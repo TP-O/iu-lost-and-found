@@ -1,23 +1,41 @@
-<div class="mt-4 ml-3 mr-3">
+<div class="mt-4 mx-auto mb-5" style="width: 750px;">
     <h3>Update post</h3>
 
     {{#with course}}
     <form method="POST" action="/courses/{{_id}}?_method=PUT">
         <div class="form-group">
-            <label for="name">Post title</label>
+            <label for="name">Title</label>
             <input type="text" class="form-control" id="name" name="name" value="{{name}}">
         </div>
 
         <div class="form-group">
-            <label for="description">Description</label>
-            <textarea class="form-control" id="description" name="description">{{description}}</textarea>
+            <label for="messenger">Messenger link</label>
+            <input type="text" class="form-control" id="messenger" name="messenger"  value="{{messenger}}">
         </div>
 
         <div class="form-group">
-            <label for="videoID">Image link</label>
-            <input type="text" class="form-control" id="videoID" name="videoID" value="{{videoID}}">
+            <label for="image">Image</label>
+            <input type="file" class="form-control">
+            <input type="hidden" class="form-control" id="image" name="image" value="{{image}}">
+            <img src="{{image}}" alt="{{name}}" class="card-img-top mt-4" style="width: 500px;">
         </div>
-        <button type="submit" class="btn btn-primary">Save</button>
+
+        <div class="form-group">
+            <label for="tag">Tag</label>
+            <select name="tag" class="custom-select">
+                <option value="None" selected>None</option>
+                <option value="Electronic Device">Electronic Device</option>
+                <option value="Pet">Pet</option>
+                <option value="Other Stuffs">Other Stuffs</option>
+            </select>
+        </div>
+
+        <div class="form-group">
+            <label for="description">Description</label>
+            <textarea  class="form-control" id="description" name="description" row="5">{{description}}</textarea>
+        </div>
+
+        <button type="submit" class="btn btn-primary">Update ei</button>
     </form>
     {{/with}}
 </div>

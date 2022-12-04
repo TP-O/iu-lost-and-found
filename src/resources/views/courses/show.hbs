@@ -1,19 +1,11 @@
-<div class="mt-4">
-    <div class="row">
-        <div class="col-lg-3">
-            <button>All posts</button>
-        </div>
-        <div class="col-lg-9">
-            <h2>{{course.name}}</h2>
-            {{!-- <iframe width="560" height="315" src="https://www.youtube.com/embed/{{course.videoID}}"
-                title="YouTube video player" frameborder="0"
-                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                allowfullscreen></iframe> --}}
-            <img src="{{course.image}}" alt="{{course.name}}" class="card-img-top" style="width: 500px;">
-            <p style="margin-right: 120px;">{{course.description}}</p>
-            <a href="/posts/create">
-                <button>Create new post</button>
-            </a>
-        </div>
+<div class="mt-4" style="width: 1600px;">
+    <div class="col-lg-9 mx-auto">
+        <h2>{{course.name}}</h2>            
+        <p>Tag: <b>{{ course.tag }}</b></p>
+        <img src="{{course.image}}" alt="{{course.name}}" class="card-img-top" style="width: 500px;">
+        <p style="margin-right: 120px;">{{course.description}}</p>
+        <button type="button" class="btn btn-success">
+            <a href="{{course.messenger}}" style="color: white" target="_blank">Contact with me</a>
+        </button>
     </div>
 </div>
