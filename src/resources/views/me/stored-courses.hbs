@@ -5,8 +5,9 @@
             <tr>
                 <th scope="col">#</th>
                 <th scope="col">Name</th>
-                <th scope="col">Created at</th>
-                <th>Action</th>
+                <th scope="col">Time create</th>
+                <th scope="col">description</th>
+                <th></th>
             </tr>
         </thead>
         <tbody>
@@ -15,9 +16,10 @@
                 <th scope="row">{{sum @index 1}}</th>
                 <td>{{this.name}}</td>
                 <td>{{this.createdAt}}</td>
+                <td>{{this.description}}</td>
                 <td>
-                    <a href="/courses/{{this._id}}/edit" class="btn btn-info">Update</a>
-                    <a href="#" class="btn btn-danger" data-toggle="modal" data-target="#deleteCourseModal"
+                    <a href="/post/{{this._id}}/edit" class="btn btn-info">Update</a>
+                    <a href="/post/delete" class="btn btn-danger" data-toggle="modal" data-target="#deleteCourseModal"
                         data-id={{_id}}>
                         Delete
                     </a>
@@ -65,7 +67,7 @@
         })
             var btnDeleteCourse = document.getElementById('btnDeleteCourse');
             btnDeleteCourse.onclick = () => {
-                formDelete.action = '/courses/' + courseID + '?_method=DELETE'
+                formDelete.action = '/post/' + courseID + '?_method=DELETE'
                 formDelete.submit();
             }
     })

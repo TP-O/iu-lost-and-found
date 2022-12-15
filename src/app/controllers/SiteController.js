@@ -1,14 +1,15 @@
 // const Course = require('../model/Course')
 // const mongooseHandler = require('../../util/mongoose')
 
+const jwt = require('jsonwebtoken')
+
 class SiteController {
     //[GET] /
     index(req, res, next) {
-        res.render('home')
-    }
-
-    search(req, res) {
-        res.render('search');
+        console.log(req.user);
+        res.render('home',{
+            user: req.user
+        })
     }
 }
 

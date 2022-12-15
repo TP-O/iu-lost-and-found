@@ -3,12 +3,14 @@ const path = require('path');
 const eprhbs = require('express-handlebars');
 const methodOverride = require('method-override');
 const morgan = require('morgan');
+var cookieParser = require('cookie-parser')
 
 const router = require('./routes');
-const db = require('./config/db')
+const db = require('/Users/nguyenlechitam/workspace/Education_web/src/config/db')
 
 const app = express();
 const port = 3000;
+app.use(cookieParser())
 
  //override with POST having ?_method=PATCH
  app.use(methodOverride('_method'))
@@ -21,7 +23,7 @@ app.use(express.static(path.join(__dirname, 'public', 'css')));
 //Connect db
 db.connect()
 
-app.use(morgan('combined'))
+// app.use(morgan('combined'))
 
 const engine = eprhbs.engine;
 
@@ -30,6 +32,7 @@ app.engine('.hbs', engine({
     extname: '.hbs',
     helpers: {
         sum: (a,b) => a+b,
+        check: (count) => count == 2,
     }
  }));
 
