@@ -1,10 +1,11 @@
 const express = require('express');
 const router = express.Router();
-// import jwt from 'jsonwebtoken'
+const bodyParser = require('body-parser')
 const jwt = require('jsonwebtoken')
-var cookieParser = require('cookie-parser')
 
-const siteController = require('../app/controllers/SiteController');
+//Parse body when use POST method
+const jsonParser = bodyParser.json()
+const urlencodedParser = bodyParser.urlencoded({ extended: false });
 
 const Accounts = require('../app/model/Account')
 
@@ -21,6 +22,10 @@ const getCookies = async (req, res, next) => {
     }
 }
 
-router.get('/', getCookies, siteController.index);
+const registerController = require('../app/controllers/RegisterController')
+
+router.get('/', getCookies, registerController.index)
+
+router.post('/store', getCookies, urlencodedParser, registerController.store)
 
 module.exports = router;

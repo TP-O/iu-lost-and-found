@@ -1,24 +1,17 @@
+{{#if user}}
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-  <div style="margin-right: 380px;">
-    <a class="navbar-brand" href="/">IU LOST & FOUND
-      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
-        aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-    </a>
+  <a class="navbar-brand" href="/">HOME
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
+      aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
 
-    <a class="navbar-brand" href="/courses">POSTS
-      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
-        aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-    </a>
-  </div>
-
-  <form class="form-inline" action="/courses">
-    <input class="form-control mr-sm-2" type="search" name="keyword" placeholder="Search" aria-label="Search">
-    <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
-  </form>
+    <a class="navbar-brand" href="/post">POSTS
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
+      aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+  </a>
 
   <div class="collapse navbar-collapse" id="navbarNav">
     <ul class="navbar-nav ml-auto">
@@ -32,14 +25,49 @@
           ChisTam
         </a>
         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-          <a class="dropdown-item" href="/courses/create">Create new post</a>
+          <a class="dropdown-item" href="/post/create">Create new post</a>
           <div class="dropdown-divider"></div>
-          <a class="dropdown-item" href="/me/stored/courses">My post</a>
-          {{!-- <a class="dropdown-item" href="/me/stored/news">My Post</a> --}}
+          <a class="dropdown-item" href="/me/stored/post">My post</a>
           <div class="dropdown-divider"></div>
-          <a class="dropdown-item" href="/">Log out</a>
+          <a class="dropdown-item" href="/logout">Log out</a>
         </div>
       </li>
     </ul>
   </div>
 </nav>
+{{else}}
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+  <a class="navbar-brand" href="/">HOME
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
+      aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <a class="navbar-brand" href="/post">POSTS
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
+      aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+  </a>
+
+  <div class="collapse navbar-collapse" id="navbarNav">
+    <ul class="navbar-nav ml-auto">
+      <img
+        src="data:image/png;base64,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"
+        alt="" class="user-avatar">
+
+      <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
+          aria-expanded="false">
+          Option
+        </a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+          <a class="dropdown-item" href="/login">Log in</a>
+          <div class="dropdown-divider"></div>
+          <a class="dropdown-item" href="/register">Register</a>
+        </div>
+      </li>
+    </ul>
+  </div>
+</nav>
+{{/if}}

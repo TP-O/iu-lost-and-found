@@ -1,6 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const bodyParser = require('body-parser')
+const jwt = require('jsonwebtoken')
 
 //Parse body when use POST method
 const jsonParser = bodyParser.json()
@@ -8,18 +9,35 @@ const urlencodedParser = bodyParser.urlencoded({ extended: false })
 
 const coursesController = require('../app/controllers/CoursesController')
 
-router.post('/store', urlencodedParser , coursesController.store)
+const Accounts = require('../app/model/Account')
 
-router.get('/create',coursesController.create)
+const getCookies = async (req, res, next) => {
+    try {
+        var result = jwt.verify(req.cookies.token, 'password')
+        console.log(result);
+        let acc = await Accounts.findOne({ _id: result._id });
+        console.log(acc);
+        req.user = acc
+        next()
+    } catch (error) {
+        res.write(`<h1>You have to login</h1>
+        <a href="/">Back to home page</a>
+        `)
+    }
+}
 
-router.put('/:id' , urlencodedParser , coursesController.update)
+router.post('/store', getCookies, urlencodedParser , coursesController.store)
 
-router.delete('/:id' , coursesController.delete)
+router.get('/create', getCookies, coursesController.create)
 
-router.get('/:id/edit',coursesController.courseEdit)
+router.put('/:id' , getCookies, urlencodedParser , coursesController.update)
 
-router.get('/:slug',coursesController.show)
+router.delete('/:id', getCookies, coursesController.delete)
 
-router.get('/',coursesController.index)
+router.get('/:id/edit', getCookies, coursesController.courseEdit)
+
+router.get('/:slug', getCookies, coursesController.show)
+
+router.get('/', getCookies, coursesController.index)
 
 module.exports = router;
